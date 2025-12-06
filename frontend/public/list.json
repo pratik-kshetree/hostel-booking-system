@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "AC Room",
+    "title": "Spacious air-conditioned room with all modern facilities.",
+    "image": "/images/ac-room.jpg",
+    "category": "AC",
+    "price": "15000 (monthly)",
+    "features": ["Free WiFi", "Attached Bathroom", "24/7 Electricity", "TV", "Double Bed"]
+  },
+  {
+    "id": 2,
+    "name": "AC Room",
+    "title": "Spacious air-conditioned room with all modern facilities.",
+    "image": "/images/ac-room.jpg",
+    "category": "AC",
+    "price": "15000 (monthly)",
+    "features": ["Free WiFi", "Attached Bathroom", "24/7 Electricity", "TV", "Double Bed"]
+  },
+  {
+    "id": 3,
+    "name": "AC  Room",
+    "title": "Spacious air-conditioned room with all modern facilities.",
+    "image": "/images/ac-room.jpg",
+    "category": "AC",
+    "price": "15000 (monthly)",
+    "features": ["Free WiFi", "Attached Bathroom", "24/7 Electricity", "TV", "Double Bed"]
+  },
+  {
+    "id": 4,
+    "name": "AC  Room",
+    "title": "Spacious air-conditioned room with all modern facilities.",
+    "image": "/images/ac-room.jpg",
+    "category": "AC",
+    "price": "15000 (monthly)",
+    "features": ["Free WiFi", "Attached Bathroom", "24/7 Electricity", "TV", "Double Bed"]
+  },
+  {
+    "id": 5,
+    "name": "AC  Room",
+    "title": "Spacious air-conditioned room with all modern facilities.",
+    "image": "/images/ac-room.jpg",
+    "category": "AC",
+    "price": "15000 (monthly)",
+    "features": ["Free WiFi", "Attached Bathroom", "24/7 Electricity", "TV", "Double Bed"]
+  },
+  {
+    "id": 6,
+    "name": "AC  Room",
+    "title": "Spacious air-conditioned room with all modern facilities.",
+    "image": "/images/ac-room.jpg",
+    "category": "AC",
+    "price": "15000 (monthly)",
+    "features": ["Free WiFi", "Attached Bathroom", "24/7 Electricity", "TV", "Double Bed"]
+  },
+  {
+    "id": 7,
+    "name": "Non-AC  Room",
+    "title": "Cozy and affordable room with all basic comforts.",
+    "image": "/images/non-ac-room.jpg",
+    "category": "Standard",
+    "price": "10000 (monthly)",
+    "features": ["Ceiling Fan", "Free WiFi", "Attached Bathroom", "Single Bed"]
+  },
+  {
+    "id": 8,
+    "name": "Shared Room",
+    "title": "Comfortable shared space ideal for students and groups.",
+    "image": "/images/shared-room.jpg",
+    "category": "Shared",
+    "price": "7000 (monthly)",
+    "features": ["Shared Bathroom", "Lockers", "WiFi", "Common Area"]
+  }
+]

@@ -1,0 +1,27 @@
+{
+  "name": "hostelbooking",
+  "version": "1.0.0",
+  "description": "mern project",
+  "homepage": "https://github.com/pratik-kshetree/hostel-booking-system#readme",
+  "bugs": {
+    "url": "https://github.com/pratik-kshetree/hostel-booking-system/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pratik-kshetree/hostel-booking-system.git"
+  },
+  "license": "ISC",
+  "author": "pratik",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "mongoose": "^9.0.0",
+    "nodemon": "^3.1.10"
+  }
+}
