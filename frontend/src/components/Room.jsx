@@ -1,8 +1,25 @@
 import React from 'react'
-import list from '../../public/list.json'
+//import list from '../../public/list.json'
 import Cards from './Cards'
 import { Link } from 'react-router-dom'
+import { useState,useEffect } from 'react'
+import axios from 'axios'
+
 function Room() {
+  const [room,setRoom] = useState([])
+  useEffect(()=>{
+    const getRoom = async()=>{
+      try{
+         const res =  await axios.get("http://localhost:4001/room");
+         console.log(res.data);
+         setRoom(res.data)
+      }catch(error){
+               console.log(error);
+               
+      }
+    }
+    getRoom();
+  },[])
   return (
     <>
   <div className=' max-w-screen-2xl container mx-auto md:px-20 px-4 dark:bg-slate-900 dark:text-white' >
@@ -22,7 +39,7 @@ function Room() {
     </div>
     <div className='mt-12 grid grid-cols-1 md:grid-cols-3'>
       {
-        list.map((item)=>(
+        room.map((item)=>(
          <Cards key={item.id} item={item} />
         ))
       }

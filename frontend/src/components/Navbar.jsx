@@ -2,8 +2,12 @@ import React, { useEffect, useState } from 'react'
 import Login from './Login';
 import { NavLink } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthProvider';
+import Logout from './Logout';
+ 
 
 function Navbar() {
+const[authUser,setauthUser]=useAuth()
   const [mode,setmode]=useState(localStorage.getItem("mode")?localStorage.getItem("mode"):"light")
   const element =document.documentElement;
   useEffect(()=>{
@@ -131,13 +135,16 @@ else{
   </svg>
 </label>
 
-  {/* login button */}
-  <div className="">
+  {/* login logout button */}
+  {authUser ? (<Logout />):(
+<div className="">
     <a className="bg-black text-white px-3 py-2 rounded-md cursor-pointer hover:bg-slate-800 "
     onClick={()=>document.getElementById("my_modal_3").showModal()} >
       Login</a>
     <Login/>
   </div>
+  )}
+  
 </div>
 </div>
  </div>

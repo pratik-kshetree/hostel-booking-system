@@ -4,18 +4,35 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import Cards from './Cards';
+import axios from 'axios'
 
 function Roomtypes() {
-  const [list,setlist]=useState([]);
 
+  // const [list,setlist]=useState([]);
+
+  // useEffect(()=>{
+  //      fetch("/list.json")
+  //      .then((response)=>response.json())
+  //      .then((data)=>{
+  //       const filterdata=data.filter((item)=>item.category==='AC');
+  //       setlist(filterdata);
+  //      })
+  //      .catch((error)=>console.error("error loading:json",error));
+  // },[])
+
+   const [room,setRoom] = useState([])
   useEffect(()=>{
-       fetch("/list.json")
-       .then((response)=>response.json())
-       .then((data)=>{
-        const filterdata=data.filter((item)=>item.category==='AC');
-        setlist(filterdata);
-       })
-       .catch((error)=>console.error("error loading:json",error));
+    const getRoom = async()=>{
+      try{
+         const res =  await axios.get("http://localhost:4001/room");
+         console.log(res.data);
+         setRoom(res.data.filter((item)=>item.category==='AC'))
+      }catch(error){
+               console.log(error);
+               
+      }
+    }
+    getRoom();
   },[])
    var settings = {
     dots: true,
@@ -60,7 +77,7 @@ function Roomtypes() {
       </p>
     <div >
        <Slider {...settings}>
-       {list.map((item)=>(
+       {room.map((item)=>(
         <Cards item={item} key={item.id}/>
        ))}
       </Slider>
