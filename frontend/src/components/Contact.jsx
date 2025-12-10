@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import { useForm } from "react-hook-form"
+import toast from 'react-hot-toast';
 
 function Contact() {
      const {
@@ -10,6 +11,11 @@ function Contact() {
         } = useForm()
       
         const onSubmit = (data) => console.log(data);
+
+        //alerting while sbmitting
+        const handleclick = ()=>{
+            toast.success("Message submitted!!!")
+        }
 
     return (
         <div>
@@ -52,7 +58,8 @@ function Contact() {
           {errors.message && <span className='text-sm text-red-500'>This field is required</span>}
    
                 </div> 
-                <button className='bg-pink-500 text-white px-4 py-2 rounded-md mt-6 w-full mb-4'>
+                <button className='bg-pink-500 text-white px-4 py-2 rounded-md mt-6 w-full mb-4'
+                onClick={handleclick}>
                     Submit</button>
             </form>
             </div>

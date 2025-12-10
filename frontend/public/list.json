@@ -3,7 +3,7 @@
     "id": 1,
     "name": "AC Room",
     "title": "Spacious air-conditioned room with all modern facilities.",
-    "image": "/images/ac-room.jpg",
+    "image": "/images/shared-room.jpg",
     "category": "AC",
     "price": "15000 (monthly)",
     "features": ["Free WiFi", "Attached Bathroom", "24/7 Electricity", "TV", "Double Bed"]

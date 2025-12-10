@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-//import list from "../../public/list.json"
+import list from "../../public/list.json"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -26,7 +26,7 @@ function Roomtypes() {
       try{
          const res =  await axios.get("http://localhost:4001/room");
          console.log(res.data);
-         setRoom(res.data.filter((item)=>item.category==='AC'))
+         setRoom(res.data.filter((item)=>item.category==='Premium'))
       }catch(error){
                console.log(error);
                
@@ -72,7 +72,7 @@ function Roomtypes() {
   return (
     <>
     <div className="max-w-screen-2xl container mx-auto md:px-20 p-4 ">
-      <h1 className='font-bold text-xl pb-1'>Premium Rooms</h1>
+      <h1 className='font-bold text-xl text-pink-500 pb-1'>Premium Rooms</h1>
        <p>Get your comfort!! 
       </p>
     <div >

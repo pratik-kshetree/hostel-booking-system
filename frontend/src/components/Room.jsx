@@ -28,9 +28,7 @@ function Room() {
       <h1 className='text-xl  md:text-4xl' >We are delighted to have you{" "} 
         <span className='text-pink-500'>Here !!!</span></h1>
         <p className='mt-12'>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium voluptatem quis voluptatibus esse, architecto facere tenetur labore rerum
-           vitae temporibus sunt quae. Repellendus nisi accusantium aspernatur inventore sequi! Ipsum, 
-           tenetur!
+          Please select a room you want!
         </p>
        <Link to="/">
         <button className=' mt-6 bg-pink-500 text-white px-4 py-2 rounded-md hover:bg-pink-700'>

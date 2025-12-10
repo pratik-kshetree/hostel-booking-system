@@ -48,7 +48,7 @@ else{
             Rooms</NavLink></li>
             <li><NavLink to="/contact" className={({isActive})=>(isActive ? "text-blue-500" : " ")}>
             Contact</NavLink></li>
-            <li><Link>About</Link></li>
+            <li><NavLink to="/about">About</NavLink></li>
         </>
     )
   return (
