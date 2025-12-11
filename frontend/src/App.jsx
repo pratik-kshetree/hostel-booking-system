@@ -6,6 +6,7 @@ import Signup from './components/Signup';
 import Contact from './components/Contact';
 import {Toaster} from "react-hot-toast";
 import { useAuth } from './context/AuthProvider';
+import About from './components/About';
 
 const App = () => {
         const [authUser,setauthUser] = useAuth()
@@ -19,6 +20,7 @@ const App = () => {
     <Route path="/room" element={authUser? <Rooms/> :  <Navigate to="/signup"/> }/>
     <Route path="/signup" element={<Signup/>}/>
     <Route path="/contact" element={<Contact/>}/>
+    <Route path="/about" element={<About/>}/>
   </Routes>
   
   <Toaster />

@@ -9,15 +9,15 @@ function Banner() {
         <div className='space-y-12 '>
         <h1 className='text-3xl font-bold '>Welcome,Your room is just a click away {" "}
             <span className='text-pink-500'>Simple. Fast. Reliable</span> 
-            </h1>
-            <p className='text-xl'>
+            </h1><br/><br/>
+            <span className='text-xl'>
              <h2 className='text-gray-600'>
-               Find your perfect room with comfort, safety, and convenience.
-                Book your hostel easily in 
-                just a few clicks.Our hostel booking system is designed to <br/>
-                make room searching smarter and faster.
+              Our Hostel Booking System is a simple and user-friendly platform designed
+        to help users easily browse, view, and book available hostel rooms. The
+        system provides clear room details, pricing, and categories to make the
+        booking process fast and hassle-free.
              </h2>
-                </p>
+                </span>
                 {/* email input */}
                    {/* <label
                     className="flex items-center gap-2  border border-gray-400 rounded-md px-3 py-2"
