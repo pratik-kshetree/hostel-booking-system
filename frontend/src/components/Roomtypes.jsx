@@ -71,14 +71,14 @@ function Roomtypes() {
  
   return (
     <>
-    <div className="max-w-screen-2xl container mx-auto md:px-20 p-4 ">
+    <div className="max-w-screen-2xl container mx-auto md:px-20 p-4 z-10">
       <h1 className='font-bold text-xl text-pink-500 pb-1'>Premium Rooms</h1>
        <p>Get your comfort!! 
       </p>
     <div >
        <Slider {...settings}>
        {room.map((item)=>(
-        <Cards item={item} key={item.id}/>
+        <Cards item={item} key={item.id} allowBooking={false}/>
        ))}
       </Slider>
     </div>

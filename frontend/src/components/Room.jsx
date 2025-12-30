@@ -38,7 +38,7 @@ function Room() {
     <div className='mt-12 grid grid-cols-1 md:grid-cols-3'>
       {
         room.map((item)=>(
-         <Cards key={item.id} item={item} />
+         <Cards key={item.id} item={item} allowBooking={true}/>
         ))
       }
     </div>

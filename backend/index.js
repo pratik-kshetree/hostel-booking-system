@@ -8,6 +8,9 @@ import roomRoute from "./route/room.route.js"
 
 import userRoute from "./route/user.route.js"
 
+import bookingRoute from "./route/booking.route.js";
+
+
 const app = express()
 
 app.use(cors());
@@ -39,6 +42,8 @@ connectDB(); //call the async function
 //defining routes
 app.use("/room",roomRoute)
 app.use("/user",userRoute)
+app.use("/booking", bookingRoute);
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`)

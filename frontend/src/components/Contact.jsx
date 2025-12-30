@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from '../components/Navbar'
 import { useForm } from "react-hook-form"
 import toast from 'react-hot-toast';
 
 function Contact() {
+ 
      const {
           register,
           handleSubmit,
@@ -14,6 +15,7 @@ function Contact() {
 
         //alerting while sbmitting
         const handleclick = ()=>{
+           
             toast.success("Message submitted!!!")
         }
 
@@ -27,7 +29,7 @@ function Contact() {
                 <h2 className='text-center text-2xl text-pink-500 font-bold'>Contact Us</h2>
                 {/* Name */}
                 <div className='mt-6 space-y-2'> 
-                    <label htmlFor="name" className='block'>Name</label>
+                    <label htmlFor="name" className='block'  >Name</label>
                     <input type="text" placeholder='Enter your name' 
                     className='w-full px-3 py-2 border outline-none rounded-md'
                     {...register("name", { required: true })}
@@ -49,7 +51,7 @@ function Contact() {
                 </div>
                 {/* message */}
                 <div className='mt-4 space-y-2'>
-                    <label htmlFor="message" className='block'>Message</label>
+                    <label htmlFor="message" className='block' >Message</label>
                     <input type="textarea" placeholder='Enter your message' 
                      className='w-full px-3 py-2 border outline-none rounded-md'
                     {...register("message", { required: true })}  
