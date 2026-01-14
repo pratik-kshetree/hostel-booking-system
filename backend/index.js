@@ -10,6 +10,9 @@ import userRoute from "./route/user.route.js"
 
 import bookingRoute from "./route/booking.route.js";
 
+import adminRoute from './route/admin.route.js';
+// import paymentRoute from './route/payment.route.js';
+
 
 const app = express()
 
@@ -43,8 +46,8 @@ connectDB(); //call the async function
 app.use("/room",roomRoute)
 app.use("/user",userRoute)
 app.use("/booking", bookingRoute);
-
-
+app.use("/admin",adminRoute);
+// app.use("/payment", paymentRoute);
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`)
   

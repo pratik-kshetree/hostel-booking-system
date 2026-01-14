@@ -4,22 +4,23 @@ function Banner() {
   return (
     <>
       <div className='max-w-screen-2xl container mx-auto md:px-20 px-4 flex-row md:flex my-10 '>
-       {/* left section */}
+        {/* left section */}
         <div className="w-full order-2 md:order-1 md:w-1/2 mt-12 md:mt-32">
-        <div className='space-y-12 '>
-        <h1 className='text-3xl font-bold '>Welcome,Your room is just a click away {" "}
-            <span className='text-pink-500'>Simple. Fast. Reliable</span> 
-            </h1><br/><br/>
-            <span className='text-xl'>
-             <h2 className='text-gray-600'>
-              Our Hostel Booking System is a simple and user-friendly platform designed
-        to help users easily browse, view, and book available hostel rooms. The
-        system provides clear room details, pricing, and categories to make the
-        booking process fast and hassle-free.
-             </h2>
-                </span>
-                {/* email input */}
-                   {/* <label
+          <div className='space-y-12 '>
+            <h1 className='text-3xl font-bold '>Welcome,Your room is just a click away {" "}
+              <span className='text-pink-500'>Simple. Fast. Reliable</span>
+            </h1><br /><br />
+            <span className='text-xl '>
+              <h2 className='text-gray-600 dark:text-white '>
+                Our Hostel Booking System is a simple and user-friendly platform designed
+                to help users easily browse, view, and book available hostel rooms. The
+                system provides clear room details, pricing, and categories to make the
+                booking process fast and hassle-free.
+                <span className='text-pink-400'>Search for your RoomType[Shared/Single/Double...]</span>
+              </h2>
+            </span>
+            {/* email input */}
+            {/* <label
                     className="flex items-center gap-2  border border-gray-400 rounded-md px-3 py-2"
                     style={{width:"550px"}}
                     >
@@ -35,14 +36,14 @@ function Banner() {
                     </svg>
                     <input type="email" className="grow outline-none bg-transparent text-gray-700" placeholder="Email" />
                     </label> */}
-                    
+
+          </div>
+          {/* button */}
+          {/* <button className="bg-pink-500 text-white py-3 px-5 rounded-md hover:bg-pink-600 mt-6">Book now</button> */}
         </div>
-        {/* button */}
-        {/* <button className="bg-pink-500 text-white py-3 px-5 rounded-md hover:bg-pink-600 mt-6">Book now</button> */}
-        </div>
-{/* right section */}
+        {/* right section */}
         <div className=" order-1 w-full md:w-1/2">
-        <img src="/images/hostel.jpg" style={{marginTop:"60px"}}  alt="hostelImage"/>
+          <img src="/images/hostel.jpg" style={{ marginTop: "60px" }} alt="hostelImage" />
         </div>
       </div>
     </>

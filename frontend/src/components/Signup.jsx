@@ -105,10 +105,14 @@ function Signup() {
             <p className="text-sm text-gray-600 dark:text-gray-300">
               Have an account?{" "}
               <button
+                type="button"
                 className="underline text-blue-500 hover:text-blue-600"
-                onClick={() =>
-                  document.getElementById("my_modal_3").showModal()
-                }
+                onClick={() => {
+                  navigate("/");
+                  setTimeout(() => {
+                    document.getElementById("my_modal_3").showModal();
+                  }, 100);
+                }}
               >
                 Login
               </button>

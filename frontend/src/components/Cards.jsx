@@ -36,63 +36,81 @@ function Cards({item,allowBooking}) {
     }
     setShowModal(true);
   }
-
+// after clicking confirm booking
   const handleBooking = async () => {
     if (!checkIn || !checkOut) {
       toast.error("Please select dates");
       return ;
     }
-    if (checkOut <= checkIn) {
-       toast.error("Both date can't be same");
+    if (new Date(checkOut) <= new Date(checkIn)) {
+       toast.error("Check-out date must be after check-in");
       return ;
     }
+
     if(totalAmount<=0){
       toast.error("Invalid Booking Duration");
-      return;s
+      return;
     }
-//debugging logging
-console.log("Auth user:",authUser);
-console.log("Room Item:",item);
 
-    // try {
-    //   await axios.post("http://localhost:4001/booking/create", {
-    //     userId: authUser._id,
-    //     roomId: item._id,
-    //     roomName: item.name,
-    //     price: item.price,
-    //     quantity:Number(quantity),
-    //     checkInDate: checkIn,
-    //     checkOutDate: checkOut,
-    //     totalAmount,
-    //   });
+    try {
+   const response = await axios.post(
+  "http://localhost:4001/booking/create",
+  {
+    userId: authUser._id,
+    roomId: item._id,
+    roomName: item.name,
+    price: item.price,
+    quantity: Number(quantity),
+    checkInDate: checkIn,
+    checkOutDate: checkOut,
+    totalAmount,
+    category: item.category
+  }
+);
 
-    //   toast.success("Booking successful!");
-    //   setShowModal(false);
-    // } 
-     try {
-    const bookingData={
-        userId: authUser._id,
-        roomId: item._id,
-        roomName: item.name,
-        price: item.price,
-        quantity:Number(quantity),
-        checkInDate: checkIn,
-        checkOutDate: checkOut,
-        totalAmount,
-      };
-       const res=await axios.post(
-        "http://localhost:4001/booking/create",
-        bookingData
-       )
-      toast.success("Booking successful!");
-      setShowModal(false);
-    } 
-    catch (error) {
-      console.log("Booking error:",error.response?.data || error.massage);
-      
-      toast.error(error.response?.data?.error || "Booking failed");
+if (response.data.success) {
+  toast.success("Room booked successfully!");
+  setShowModal(false);
+} else {
+      toast.error(response.data.message || "Booking failed");
     }
-  };
+    }catch (error) {
+  console.error(error.message);
+  toast.error("Booking failed. Please try again.");
+}
+  }    
+//   const redirectToEsewa = (esewaConfig, bookingId) => {
+//   const esewaEndpoint = "https://uat.esewa.com.np/epay/main"; // TEST
+
+//   const form = document.createElement("form");
+//   form.method = "POST";
+//   form.action = esewaEndpoint;
+
+//   const fields = {
+//     amt: esewaConfig.amount,          // base amount
+//     psc: 0,                            // service charge
+//     pdc: 0,                            // delivery charge
+//     txAmt: 0,                          // tax amount
+//     tAmt: esewaConfig.amount,          // total amount (IMPORTANT)
+//     pid: String(bookingId),                    // product ID
+//     scd: "EPAYTEST",     // merchant code
+//     su: esewaConfig.successUrl,        // success URL
+//     fu: esewaConfig.failureUrl         // failure URL
+//   };
+
+//   Object.entries(fields).forEach(([key, value]) => {
+//     const input = document.createElement("input");
+//     input.type = "hidden";
+//     input.name = key;
+//     input.value = value;
+//     form.appendChild(input);
+//   });
+
+//   document.body.appendChild(form);
+//   form.submit();
+// };
+
+
   return (
     <>
     <div className='mb-4 p-3'>
@@ -118,7 +136,7 @@ console.log("Room Item:",item);
       <div 
       className=" cursor-pointer border-[3px]  rounded-full py-1 px-2 hover:bg-pink-500 hover:text-white "
       // onClick={handleclick}
-      onClick={() => openModal(true)}
+      onClick={openModal}
       >
         Book now
         </div>
@@ -130,9 +148,9 @@ console.log("Room Item:",item);
 
     {/* BOOKING MODal */}
   {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-[9999]">
-          <div className="bg-white dark:bg-slate-800 p-6 rounded-lg w-96 z-[10000]">
-           <h2 className="text-xl font-bold mb-3 flex justify-center text-pink-600">Book Room</h2>
+        <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-[9999] ">
+          <div className="bg-white dark:bg-slate-800 p-6 rounded-lg w-96 z-[10000] border-white border-2">
+           <h2 className="text-xl font-bold mb-3 flex justify-center text-pink-600 dark:text-pink-400">Book Room</h2>
 
             <p className="mb-2">
               <strong className=' px-2 border-[3px] rounded-full'>Room</strong>:{item.name}
@@ -148,7 +166,7 @@ console.log("Room Item:",item);
               min="1"
               value={quantity}
               onChange={(e) => setQuantity(Number(e.target.value))}
-              className="w-full mb-3 p-2 border rounded"
+              className="w-full mb-3 p-2 border rounded-full dark:text-white dark:bg-slate-600"
             />
 {/* CHECK IN */}
             <label className="inline-block mb-2 px-2 border rounded-md bg-pink-600 text-white ">Check-in Date</label>
@@ -156,7 +174,7 @@ console.log("Room Item:",item);
               type="date"
               value={checkIn}
               onChange={(e) => setCheckIn(e.target.value)}
-              className="w-full mb-3 p-2 border rounded"
+              className="w-full mb-3 p-2 border rounded-full dark:bg-slate-600 dark:text-white"
             />
 {/* CHECK OUT */}
             <label className="inline-block mb-2 px-2 border rounded-md bg-pink-600 text-white">Check-out Date</label>
@@ -164,7 +182,7 @@ console.log("Room Item:",item);
               type="date"
               value={checkOut}
               onChange={(e) => setCheckOut(e.target.value)}
-              className="w-full mb-3 p-2 border rounded"
+              className="w-full mb-3 p-2 border rounded-full dark:bg-slate-600 dark:text-white"
             />
 {/* TOTAL AMOUNT */}
             <p className="mb-3 font-semibold">

@@ -4,21 +4,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import Cards from './Cards';
-import axios from 'axios'
+import axios from 'axios';
+import {  NavLink } from 'react-router-dom';
+
 
 function Roomtypes() {
-
-  // const [list,setlist]=useState([]);
-
-  // useEffect(()=>{
-  //      fetch("/list.json")
-  //      .then((response)=>response.json())
-  //      .then((data)=>{
-  //       const filterdata=data.filter((item)=>item.category==='AC');
-  //       setlist(filterdata);
-  //      })
-  //      .catch((error)=>console.error("error loading:json",error));
-  // },[])
 
    const [room,setRoom] = useState([])
   useEffect(()=>{
@@ -72,10 +62,11 @@ function Roomtypes() {
   return (
     <>
     <div className="max-w-screen-2xl container mx-auto md:px-20 p-4 z-10">
-      <h1 className='font-bold text-xl text-pink-500 pb-1'>Premium Rooms</h1>
-       <p>Get your comfort!! 
-      </p>
-    <div >
+      <h1 className='font-bold text-2xl  pb-1'>Premium Category</h1>
+       <pre className='text-pink-500'>
+       <span className='font-bold'>Please goto <NavLink to="/rooms" className='font-bold text-xl text-blue-500 pb-1'>Rooms</NavLink> to book rooms</span>
+      </pre>
+    <div>
        <Slider {...settings}>
        {room.map((item)=>(
         <Cards item={item} key={item.id} allowBooking={false}/>

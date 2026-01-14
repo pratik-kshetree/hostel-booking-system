@@ -15,7 +15,7 @@ function Contact() {
 
         //alerting while sbmitting
         const handleclick = ()=>{
-           
+          
             toast.success("Message submitted!!!")
         }
 
@@ -23,15 +23,15 @@ function Contact() {
         <div>
         <Navbar/>
 
-        <div className=' flex justify-center items-center h-screen '>
-            <div className='w-[400px] border-[2px] rounded-md p-6 bg-white shadow-2xl'>
+        <div className=' flex justify-center items-center h-screen dark:bg-slate-800'>
+            <div className='w-[400px]  rounded-md p-6 bg-white shadow-2xl dark:bg-slate-600'>
             <form action="" onSubmit={handleSubmit(onSubmit)}>
                 <h2 className='text-center text-2xl text-pink-500 font-bold'>Contact Us</h2>
                 {/* Name */}
                 <div className='mt-6 space-y-2'> 
                     <label htmlFor="name" className='block'  >Name</label>
                     <input type="text" placeholder='Enter your name' 
-                    className='w-full px-3 py-2 border outline-none rounded-md'
+                    className='w-full px-3 py-2 border outline-none rounded-md dark:bg-slate-700'
                     {...register("name", { required: true })}
                     />
                     <br/>
@@ -42,7 +42,7 @@ function Contact() {
                 <div className='mt-4 space-y-2'>
                     <label htmlFor="email" className='block'>Email</label>
                     <input type="email" placeholder='Enter your email' 
-                     className='w-full px-3 py-2 border outline-none rounded-md'
+                     className='w-full px-3 py-2 border outline-none rounded-md dark:bg-slate-700'
                       {...register("email", { required: true })}
                     />
                      <br/>
@@ -53,7 +53,7 @@ function Contact() {
                 <div className='mt-4 space-y-2'>
                     <label htmlFor="message" className='block' >Message</label>
                     <input type="textarea" placeholder='Enter your message' 
-                     className='w-full px-3 py-2 border outline-none rounded-md'
+                     className='w-full px-3 py-2 border outline-none rounded-md dark:bg-slate-700'
                     {...register("message", { required: true })}  
                     /> 
                      <br/>

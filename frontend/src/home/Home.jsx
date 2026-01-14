@@ -7,7 +7,7 @@ import Roomtypes from '../components/Roomtypes'
 function home() {
   return (
     <div>
-      <Navbar />
+    <Navbar />
       <Banner />
       <Roomtypes/>
       <Footer/>

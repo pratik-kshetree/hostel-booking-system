@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import Login from './Login';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthProvider';
 import Logout from './Logout';
  
 
 function Navbar() {
+const navigate = useNavigate();
 const[authUser,setauthUser]=useAuth()
+const [searchTerm, setSearchTerm] = useState("");
   const [mode,setmode]=useState(localStorage.getItem("mode")?localStorage.getItem("mode"):"light")
   const element =document.documentElement;
   useEffect(()=>{
@@ -50,6 +52,8 @@ else{
             Contact</NavLink></li>
             <li><NavLink to="/about" className={({isActive})=>(isActive ? "text-blue-500" : " ")}>
             About</NavLink></li>
+            <li><NavLink to="/mybookings" className={({isActive})=>(isActive ? "text-blue-500" : " ")}>
+            MyBookings</NavLink></li>
         </>
     )
   return (
@@ -80,7 +84,7 @@ else{
         {navitems}
       </ul>
     </div>
-    <a className="btn btn-ghost text-2xl">hostelBooking</a>
+    <a className="btn btn-ghost text-2xl text-pink-600">hostelBooking</a>
   </div>
    <div className="navbar-end space-x-3">
   <div className="navbar-center hidden lg:flex">
@@ -93,8 +97,21 @@ else{
   <div className='hidden md:block '>
     <label className="px-3 py-2 border rounded-md flex items-center gap-2">
   <input type="text" 
-  className=" grow outline-none border rounded-full p-1 dark:bg-slate-600 dark:text-white" placeholder="Search" />
+  value={searchTerm}
+  onChange={(e) => setSearchTerm(e.target.value)}
+  onKeyPress={(e) => {
+    if (e.key === 'Enter' && searchTerm.trim()) {
+      navigate(`/room?search=${encodeURIComponent(searchTerm)}`);
+    }
+  }}
+  className=" grow outline-none border rounded-full p-1 dark:bg-slate-600 dark:text-white" placeholder="Search rooms..." />
   <svg
+  role="button"
+  onClick={() => {
+    if (searchTerm.trim()) {
+      navigate(`/room?search=${encodeURIComponent(searchTerm)}`);
+    }
+  }}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 16 16"
     fill="currentColor"
@@ -139,7 +156,7 @@ else{
   {/* login logout button */}
   {authUser ? (<Logout />):(
 <div className="">
-    <a className="bg-black text-white px-3 py-2 rounded-md cursor-pointer hover:bg-slate-800 "
+    <a className="bg-pink-600 text-white px-3 py-2 rounded-md cursor-pointer hover:bg-slate-600"
     onClick={()=>document.getElementById("my_modal_3").showModal()} >
       Login</a>
     <Login/>

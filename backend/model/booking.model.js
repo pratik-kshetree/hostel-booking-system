@@ -15,13 +15,21 @@ const bookingSchema = new mongoose.Schema({
   roomName: String,
   price: Number,
   quantity: Number,
-  checkInDate: String,
-  checkOutDate: String,
+  checkInDate: Date,
+  checkOutDate: Date,
   totalAmount: Number,
+  category: String,
   status: {
     type: String,
     default: "pending"
-  }
+  },
+  // paymentStatus: {   // new field for payment status
+  //   type: String,
+  //   default: "pending",
+  //   enum: ["pending", "completed", "failed", "cancelled"]
+  // },
+  // transactionId: String,
+  // esewaRefId: String
 }, { timestamps: true });
 
 export default mongoose.model("Booking", bookingSchema);
