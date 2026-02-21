@@ -6,7 +6,14 @@ const roomSchema  = new mongoose.Schema({
     category:String,
     image:String,
     title:String,
-    features:Array
+    features:Array,
+
+    // //new to enable room count
+    // totalRooms:{
+    //     type:Number,
+    //     required:true,
+    //     default:5
+    // }
 
 },{collection:"rooms"});
 

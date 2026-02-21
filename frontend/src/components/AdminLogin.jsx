@@ -19,6 +19,8 @@ function AdminLogin() {
 
     } catch (error) {
       alert("Admin login failed");
+      console.log(error);
+      
     }
   };
 

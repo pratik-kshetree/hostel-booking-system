@@ -14,14 +14,24 @@ import adminRoute from './route/admin.route.js';
 // import paymentRoute from './route/payment.route.js';
 
 
+import http from 'http'
+import { Server as IOServer } from 'socket.io'
+
 const app = express()
 
 app.use(cors());
 dotenv.config();
 app.use(express.json());
 
+// Serve uploaded images
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
+
 // const port = 3000
-const PORT =process.env.PORT || 4000;
+const PORT = process.env.PORT || 4000;
 const URL= process.env.DB_URL
 
 app.get('/', (req, res) => {
@@ -48,7 +58,21 @@ app.use("/user",userRoute)
 app.use("/booking", bookingRoute);
 app.use("/admin",adminRoute);
 // app.use("/payment", paymentRoute);
-app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`)
-  
-})
+
+// create http server and attach socket.io
+const server = http.createServer(app);
+const io = new IOServer(server, {
+  cors: { origin: '*' }
+});
+
+// expose io through app so controllers can emit
+app.set('io', io);
+
+server.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
+});
+
+// io.on('connection', (socket) => {
+//   console.log('client connected', socket.id);
+//   socket.on('disconnect', () => console.log('client disconnected', socket.id));
+// });

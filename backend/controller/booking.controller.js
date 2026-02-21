@@ -13,6 +13,59 @@ export const createBooking = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+// --------------to enable fix number of rooms-------------
+// export const createBooking = async (req, res) => {
+//   try {
+//     const { roomId, quantity } = req.body;
+
+//     // 1️⃣ Fetch room
+//     const room = await Room.findById(roomId);
+//     if (!room) {
+//       return res.status(404).json({ success: false, message: "Room not found" });
+//     }
+
+//     // 2️⃣ Count already booked rooms (ACTIVE ONLY)
+//     const booked = await Booking.aggregate([
+//       {
+//         $match: {
+//           roomId: room._id,
+//           status: { $in: ["pending", "confirmed"] }
+//         }
+//       },
+//       {
+//         $group: {
+//           _id: null,
+//           totalBooked: { $sum: "$quantity" }
+//         }
+//       }
+//     ]);
+
+//     const alreadyBooked = booked[0]?.totalBooked || 0;
+
+//     // 3️⃣ Check availability
+//     if (alreadyBooked + quantity > room.totalRooms) {
+//       return res.status(400).json({
+//         success: false,
+//         message: "Room not available. All rooms are booked."
+//       });
+//     }
+
+//     // 4️⃣ Create booking
+//     const booking = new Booking(req.body);
+//     await booking.save();
+
+//     res.status(201).json({
+//       success: true,
+//       message: "Booking created successfully",
+//       booking
+//     });
+
+//   } catch (error) {
+//     res.status(500).json({ success: false, error: error.message });
+//   }
+// };
+
 // GET Booking of loggedin user
 export const getUserBookings = async (req, res) => {
   try {
@@ -23,7 +76,7 @@ export const getUserBookings = async (req, res) => {
   }
 };
 
-// -----------ADMIN-----------
+// -----------ADMIN----------------------------------------------
 
 // get all bookings for ADMIN
 export const getAllBookings = async(req,res)=>{

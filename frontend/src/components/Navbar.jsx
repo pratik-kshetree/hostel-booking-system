@@ -62,8 +62,9 @@ else{
     }`}>
         <div className="max-w-screen-2xl container mx-auto md:px-20 px-4">
       <div className="navbar ">
+        {/* this navbar for mobile menu at left */}
   <div className="navbar-start">
-    <div className="dropdown">
+    <div className="dropdown ">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -80,12 +81,13 @@ else{
       </div>
       <ul
         tabIndex={0}
-        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-44 p-2 shadow dark:text-white dark:bg-slate-900 sm:w-52">
         {navitems}
       </ul>
     </div>
-    <a className="btn btn-ghost text-2xl text-pink-600">hostelBooking</a>
+    <a className="btn btn-ghost text-sm md:text-xl text-pink-600">hostelBooking</a>
   </div>
+  {/* navbar for laptop where navitems at center */}
    <div className="navbar-end space-x-3">
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">

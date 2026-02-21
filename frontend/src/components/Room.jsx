@@ -4,6 +4,7 @@ import Cards from './Cards'
 import { Link, useSearchParams } from 'react-router-dom'
 import { useState,useEffect } from 'react'
 import axios from 'axios'
+import { io } from 'socket.io-client'
 
 function Room() {
   const [searchParams] = useSearchParams();
@@ -23,6 +24,17 @@ function Room() {
       }
     }
     getRoom();
+
+    // connect to socket.io to receive live updates
+    const socket = io('http://localhost:4001');
+    socket.on('roomsUpdated', (rooms) => {
+      if (Array.isArray(rooms)) setRoom(rooms);
+      else getRoom();
+    });
+
+    return () => {
+      socket.disconnect();
+    }
   },[])
   
   useEffect(()=>{
@@ -58,7 +70,7 @@ function Room() {
       {
         filteredRoom.length > 0 ? (
           filteredRoom.map((item)=>(
-           <Cards key={item.id} item={item} allowBooking={true}/>
+           <Cards key={item._id} item={item} allowBooking={true}/>
           ))
         ) : (
           <div className='col-span-3 text-center text-gray-500 py-8'>

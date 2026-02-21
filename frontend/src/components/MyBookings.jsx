@@ -67,7 +67,8 @@ function MyBookings() {
 
               <p>Check-in: {new Date(booking.checkInDate).toLocaleDateString()}</p>
               <p>Check-out: {new Date(booking.checkOutDate).toLocaleDateString()}</p>
-              <p>Quantity: {booking.quantity}</p>
+              <p>Quantity : {booking.quantity}</p>
+              <p>BookingTime 📅: {new Date(booking.createdAt).toLocaleString()}</p>
 
               <p className="font-bold">
                 Total Amount: Rs {booking.totalAmount}
